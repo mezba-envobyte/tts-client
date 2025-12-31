@@ -9,13 +9,16 @@ function App() {
 
   const handleSynthesize = async () => {
     try {
-      const response = await fetch("http://localhost:8000/synthesize", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text, languageCode, gender }),
-      });
+      const response = await fetch(
+        "https://tts-server-by28.onrender.com/synthesize",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text, languageCode, gender }),
+        }
+      );
       console.log(response);
       const data = await response.json();
       if (data.audioContent) {
